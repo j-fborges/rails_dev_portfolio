@@ -5,40 +5,41 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
+    authorize Project
     @projects = Project.all
+
+    @projects = policy_scope(Project)
   end
 
   # GET /projects/1 or /projects/1.json
-  def show; end
+  def show
+    authorize Project
+  end
 
   # GET /projects/new
   def new
     @project = Project.new
+    authorize @project
     @mode = 'file' # default to file upload
   end
 
   # GET /projects/1/edit
   def edit
     @mode = 'file' # default to file upload
+    authorize @project
   end
 
   # POST /projects or /projects.json
   def create
     @project = Project.new(project_params)
+    authorize @project
 
-    respond_to do |format|
-      if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.json { render :show, status: :created, location: @project }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
-    end
+    create_respond_to_formatted
   end
 
   # PATCH/PUT /projects/1 or /projects/1.json
   def update
+    authorize @project
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
@@ -52,6 +53,7 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1 or /projects/1.json
   def destroy
+    authorize @project
     @project.destroy
 
     respond_to do |format|
@@ -86,5 +88,17 @@ class ProjectsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def project_params
     params.require(:project).permit(:title, :description, :date, :website_url, :github_url, :technologies, :featured_image)
+  end
+
+  def create_respond_to_formatted
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.json { render :show, status: :created, location: @project }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
   end
 end

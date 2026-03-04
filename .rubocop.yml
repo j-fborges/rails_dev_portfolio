@@ -19,10 +19,12 @@ Style/Documentation:
     - 'app/controllers/**/*'
     - 'app/helpers/**/*'
     - 'app/mailers/**/*'
+    - 'app/policies/**/*'
     - 'test/**/*'
     - 'db/migrate/**/*'
 
 Layout/LineLength:
+  IgnoredPatterns: ['^(\s*#)']
   Exclude:
     - 'app/controllers/**/*'
     - 'app/helpers/**/*'
@@ -32,3 +34,11 @@ Layout/LineLength:
     - 'config/**/*'
     - 'Gemfile'
     - 'Rakefile'
+
+Rails/BulkChangeTable:
+  Exclude:
+    - 'db/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/**/*'

@@ -3,6 +3,20 @@
 # == Route Map
 #
 #                               Prefix Verb   URI Pattern                                                                              Controller#Action
+#                     new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
+#                         user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
+#                 destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
+#                    new_user_password GET    /users/password/new(.:format)                                                            devise/passwords#new
+#                   edit_user_password GET    /users/password/edit(.:format)                                                           devise/passwords#edit
+#                        user_password PATCH  /users/password(.:format)                                                                devise/passwords#update
+#                                      PUT    /users/password(.:format)                                                                devise/passwords#update
+#                                      POST   /users/password(.:format)                                                                devise/passwords#create
+#               accept_user_invitation GET    /users/invitation/accept(.:format)                                                       users/invitations#edit
+#               remove_user_invitation GET    /users/invitation/remove(.:format)                                                       users/invitations#destroy
+#                  new_user_invitation GET    /users/invitation/new(.:format)                                                          users/invitations#new
+#                      user_invitation PATCH  /users/invitation(.:format)                                                              users/invitations#update
+#                                      PUT    /users/invitation(.:format)                                                              users/invitations#update
+#                                      POST   /users/invitation(.:format)                                                              users/invitations#create
 #                             projects GET    /projects(.:format)                                                                      projects#index
 #                                      POST   /projects(.:format)                                                                      projects#create
 #                          new_project GET    /projects/new(.:format)                                                                  projects#new
@@ -28,6 +42,7 @@
 #                 rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
+  devise_for :users, skip: [:registrations], controllers: { invitations: 'users/invitations' }
   resources :projects
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

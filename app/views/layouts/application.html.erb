@@ -9,6 +9,23 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <nav>
+      <% if user_signed_in? %>
+        <% if current_user.admin? %>
+          <%= link_to 'Home', root_path %>
+          <%= link_to 'Projects', projects_path %>
+          <%= link_to 'Invite New User', new_user_invitation_path %>
+        <% end %>
+        <%= button_to 'Log out',
+                      destroy_user_session_path,
+                      method: :delete,
+                      class: 'btn btn-link' %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_path %>
+      <% end %>
+    </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
