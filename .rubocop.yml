@@ -1,0 +1,34 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.4
+  TargetRailsVersion: 5.2
+  NewCops: enable
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/*.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/*.rb'
+
+Style/Documentation:
+  Exclude:
+    - 'app/controllers/**/*'
+    - 'app/helpers/**/*'
+    - 'app/mailers/**/*'
+    - 'test/**/*'
+    - 'db/migrate/**/*'
+
+Layout/LineLength:
+  Exclude:
+    - 'app/controllers/**/*'
+    - 'app/helpers/**/*'
+    - 'app/mailers/**/*'
+    - 'test/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'Gemfile'
+    - 'Rakefile'

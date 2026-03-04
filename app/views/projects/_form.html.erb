@@ -1,0 +1,52 @@
+<%= form_with(model: project, local: true) do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, 'error') %> prohibited this project from being saved:</h2>
+      <ul>
+        <% project.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+  <div class="field">
+    <%= form.label :website_url %>
+    <%= form.text_field :website_url %>
+  </div>
+  <div class="field">
+    <%= form.label :github_url %>
+    <%= form.text_field :github_url %>
+  </div>
+  <div class="field">
+    <%= form.label :technologies %>
+    <%= form.text_field :technologies %>
+  </div>
+  <div class="field">
+    <%= form.label :featured_image %>
+    <div id="featured-image-container">
+      <% if @mode == 'file' %>
+        <%= form.file_field :featured_image %>
+      <% else %>
+        <%= form.text_field :featured_image %>
+      <% end %>
+    </div>
+    <button type="button" onclick="toggleFeaturedImage()">
+      Switch to <%= @mode == 'file' ? 'text' : 'file' %> input
+    </button>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+app/views/projects/_toggle_featured_image_file_field.html.erb Wed Mar  4 00:59:46.0103489858 2026
+app/views/projects/edit.html.erb Wed Mar  4 00:59:46.0308641504 2026
+app/views/projects/show.html.erb Wed Mar  4 00:59:46.0509994046 2026
+app/views/projects/_form.html.erb Wed Mar  4 00:59:46.0718944797 2026
+app/views/projects/index.html.erb Wed Mar  4 01:02:19.0145282962 2026
+app/views/projects/new.html.erb Wed Mar  4 00:59:47.0140645402 2026
+app/views/pages/home.html.erb Wed Mar  4 01:02:26.0007265974 2026
+app/views/layouts/application.html.erb Wed Mar  4 00:59:47.0543350485 2026
+app/views/layouts/mailer.html.erb Wed Mar  4 00:59:47.0786493177 2026

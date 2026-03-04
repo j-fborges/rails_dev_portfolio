@@ -1,0 +1,31 @@
+---
+glob: "**/*.{html,text,js}{+*,}.erb"
+exclude:
+  - '**/vendor/**/*'
+  - '**/node_modules/**/*'
+linters:
+  FinalNewline:
+    enabled: true
+  Indentation:
+    enabled: true
+  TrailingWhitespace:
+    enabled: true
+  SpaceAroundErbTag:
+    enabled: true
+  Rubocop:
+    enabled: true
+    rubocop_config:
+      inherit_from:
+        - .rubocop.yml
+      Style/FrozenStringLiteralComment:
+        Enabled: false              # this cop destroys ERB files
+      Layout/InitialIndentation:
+        Enabled: false
+      Layout/LeadingEmptyLines:
+        Enabled: false
+      Layout/TrailingEmptyLines:
+        Enabled: false              # let erb_lint handle this
+      Layout/TrailingWhitespace:
+        enabled: true
+      Layout/SpaceBeforeBlockBraces:
+        enabled: true

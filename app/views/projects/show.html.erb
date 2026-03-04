@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Title:</strong>
+  <%= @project.title %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+<p>
+  <strong>Date:</strong>
+  <%= @project.date %>
+</p>
+<p>
+  <strong>Website url:</strong>
+  <%= @project.website_url %>
+</p>
+<p>
+  <strong>Github url:</strong>
+  <%= @project.github_url %>
+</p>
+<p>
+  <strong>Technologies:</strong>
+  <%= @project.technologies %>
+</p>
+<% @project.technologies.split(',').each do |tech| %>
+  <span class="badge bg-secondary"><%= tech.strip %></span>
+<% end %>
+<p>
+  <strong>Featured image:</strong>
+  <%= @project.featured_image %>
+</p>
+<% if @project.featured_image.attached? %>
+  <%= image_tag @project.featured_image %>
+<% end %>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
