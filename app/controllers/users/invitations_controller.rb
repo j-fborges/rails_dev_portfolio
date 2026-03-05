@@ -16,7 +16,7 @@ module Users
         set_flash_message :notice, :send_instructions, email: resource.email
         respond_with resource, location: after_invite_path_for(resource)
       else
-        respond_with_navigational(resource) { render :new }
+        respond_with_navigational(resource) { render :new, status: :unprocessable_entity }
       end
     end
 
@@ -28,7 +28,7 @@ module Users
     end
 
     def authorize_admin
-      return unless current_user&.admin?
+      return if current_user&.admin?
 
       flash[:alert] = 'Only admins can send invitations'
       redirect_to root_path

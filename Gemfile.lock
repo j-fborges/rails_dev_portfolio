@@ -88,6 +88,10 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.3.6)
     crass (1.0.6)
+    database_cleaner-active_record (2.2.2)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0)
+    database_cleaner-core (2.0.1)
     devise (4.9.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -113,6 +117,11 @@ GEM
     erubi (1.13.1)
     execjs (1.3.0)
       multi_json (~> 1.0)
+    factory_bot (5.2.0)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.2.0)
+      factory_bot (~> 5.2.0)
+      railties (>= 4.2.0)
     ffi (1.15.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -162,6 +171,8 @@ GEM
       nio4r (~> 2.0)
     pundit (2.5.2)
       activesupport (>= 3.0.0)
+    pundit-matchers (1.9.0)
+      rspec-rails (>= 3.0.0)
     racc (1.5.2)
     rack (2.2.22)
     rack-test (2.2.0)
@@ -182,6 +193,10 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.2.8.1)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.1.1)
       activesupport (>= 5.0.0)
       minitest
@@ -306,11 +321,13 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   coffee-rails (~> 4.2)
+  database_cleaner-active_record (~> 2.0)
   devise (~> 4.9, >= 4.9.4)
   devise_invitable (~> 2.0.0)
   dotenv-rails
   erb_lint (~> 0.0.34)
   execjs (= 1.3.0)
+  factory_bot_rails (~> 5.0)
   htmlbeautifier
   jbuilder (~> 2.5)
   jquery-rails
@@ -321,7 +338,9 @@ DEPENDENCIES
   passenger
   puma
   pundit
+  pundit-matchers (~> 1.6)
   rails (~> 5.2.8, >= 5.2.8.1)
+  rails-controller-testing (~> 1.0)
   responders (~> 3.0, >= 3.0.1)
   rspec-rails (~> 5.1.2)
   rubocop (~> 0.79.0)

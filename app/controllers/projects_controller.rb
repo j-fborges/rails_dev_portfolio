@@ -64,20 +64,6 @@ class ProjectsController < ApplicationController
 
   # app/controllers/projects_controller.rb
 
-  def toggle_featured_image_field
-    # Find or build the project (for new records we use Project.new)
-    @project = if params[:project_id].present?
-                 Project.find(params[:project_id])
-               else
-                 Project.new
-               end
-
-    current_mode = params[:mode] # 'file' or 'text'
-    new_mode = current_mode == 'file' ? 'text' : 'file'
-
-    render partial: 'featured_image_toggle', locals: { project: @project, mode: new_mode }
-  end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.

@@ -31,6 +31,7 @@ ZIP_NAME="deploy-$(date +%Y%m%d-%H%M%S).zip"
 zip -r $ZIP_NAME . \
   -x "log/*" \
   -x "tmp/*" \
+  -x "conf/tmp/*" \
   -x "test/*" \
   -x "spec/*" \
   -x "php-local-server/*" \

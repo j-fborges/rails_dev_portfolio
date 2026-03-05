@@ -50,7 +50,6 @@ Rails.application.routes.draw do
 
   resources :projects do
     collection do
-      post :toggle_featured_image_field
     end
   end
 end
